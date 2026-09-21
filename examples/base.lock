@@ -1,0 +1,33 @@
+lockfile v1
+root web@1.0.0
+root tool@3.0.0
+
+package web@1.0.0
+    source registry:acme/web
+    integrity sha256:aaaa1111
+    requires:
+        lib@1.0.0
+        cache@1.0.0
+    end
+
+package lib@1.0.0
+    source registry:acme/lib
+    integrity sha256:bbbb1111
+    end
+
+package cache@1.0.0
+    source registry:mirror/cache
+    integrity sha256:c0ffee01
+    end
+
+package tool@3.0.0
+    source git:https://example.com/tool#v3.0.0
+    integrity sha256:dddd1111
+    requires:
+        util@1.0.0
+    end
+
+package util@1.0.0
+    source registry:acme/util
+    integrity sha256:eeee1111
+    end

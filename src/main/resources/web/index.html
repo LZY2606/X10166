@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lockfile 语义合并室</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <h1>Lockfile 语义合并室</h1>
+  <div class="meta">
+    <span id="status-pill" class="pill">初始化…</span>
+    <span id="rev-pill" class="pill subtle">revision -</span>
+    <span id="out-pill" class="pill subtle">输出版本 -</span>
+  </div>
+</header>
+
+<main class="layout">
+  <section class="panel inputs-panel">
+    <div class="panel-head">
+      <h2>1 · 三份 lockfile</h2>
+      <div class="actions">
+        <button id="btn-sample" type="button">载入示例</button>
+        <button id="btn-clear" type="button">清空</button>
+        <button id="btn-save" class="primary" type="button">解析并合并</button>
+      </div>
+    </div>
+    <div class="editors">
+      <div class="editor">
+        <label>Base（共同祖先）<span data-fp="base" class="fp"></span></label>
+        <textarea id="base" spellcheck="false" placeholder="lockfile v1 …"></textarea>
+      </div>
+      <div class="editor">
+        <label>Left（本分支）<span data-fp="left" class="fp"></span></label>
+        <textarea id="left" spellcheck="false"></textarea>
+      </div>
+      <div class="editor">
+        <label>Right（对方分支）<span data-fp="right" class="fp"></span></label>
+        <textarea id="right" spellcheck="false"></textarea>
+      </div>
+    </div>
+    <p class="hint">
+      格式：<code>lockfile v1</code>、<code>root name@ver</code>、
+      <code>package name@ver</code> 块内含 <code>source</code>、
+      <code>integrity</code>、<code>platforms</code>、<code>requires:</code>。
+      裁决绑定三份输入指纹；输入变化后旧裁决不会自动套用。
+    </p>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head">
+      <h2>2 · 包图</h2>
+      <div class="legend">
+        <span class="dot reachable"></span>根可达
+        <span class="dot pruned"></span>已清理
+        <span class="dot dangling"></span>悬空
+        <span class="dot rootnode"></span>根
+      </div>
+    </div>
+    <div id="graph-wrap" class="graph-wrap">
+      <svg id="graph" xmlns="http://www.w3.org/2000/svg"></svg>
+      <div id="node-card" class="node-card hidden"></div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head">
+      <h2>3 · 待决冲突</h2>
+      <div class="actions">
+        <button id="btn-reset" type="button">清除全部裁决</button>
+      </div>
+    </div>
+    <div id="conflicts" class="conflicts"></div>
+  </section>
+
+  <section class="two-col">
+    <section class="panel">
+      <h2>4 · 完整性与结构检查</h2>
+      <h3>阻断问题</h3>
+      <ul id="issues" class="issues"></ul>
+      <h3>可达性清理说明</h3>
+      <ul id="pruned" class="pruned"></ul>
+      <h3>自动合并动作</h3>
+      <ul id="changes" class="changes"></ul>
+    </section>
+    <section class="panel">
+      <h2>解析诊断</h2>
+      <ul id="diagnostics" class="diagnostics"></ul>
+    </section>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head">
+      <h2>5 · 合并结果（稳定排序）</h2>
+      <div class="actions">
+        <button id="btn-download" class="primary" type="button" disabled>下载 merged.lock</button>
+      </div>
+    </div>
+    <textarea id="output" spellcheck="false" readonly placeholder="存在冲突或完整性问题时不会产生输出"></textarea>
+    <div id="block-reasons" class="block-reasons"></div>
+  </section>
+</main>
+
+<div id="toast" class="toast hidden"></div>
+<script src="app.js"></script>
+</body>
+</html>
