@@ -1,0 +1,123 @@
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: -apple-system, "PingFang SC", "Microsoft YaHei", Segoe UI, sans-serif;
+  background: #f5f6f8;
+  color: #1f2430;
+}
+header {
+  background: #1f2a44;
+  color: #fff;
+  padding: 14px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+header h1 { font-size: 20px; margin: 0; }
+.session-bar { display: flex; align-items: center; gap: 10px; }
+.session-bar select { padding: 4px 8px; border-radius: 6px; border: none; }
+.revision { font-size: 12px; color: #b8c2d9; }
+main { max-width: 1280px; margin: 0 auto; padding: 20px; }
+.card, .inputs-card {
+  background: #fff;
+  border: 1px solid #e3e6ee;
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin-bottom: 18px;
+}
+h2 { font-size: 15px; margin: 0 0 12px; color: #2a3350; }
+h3 { font-size: 13px; margin: 0 0 6px; color: #41506e; }
+.input-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+textarea {
+  width: 100%;
+  height: 260px;
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 12px;
+  border: 1px solid #ccd2e0;
+  border-radius: 8px;
+  padding: 10px;
+  resize: vertical;
+  background: #fbfcfe;
+}
+textarea:focus { outline: 2px solid #6d8bff; border-color: #6d8bff; }
+.fp { font-size: 10px; color: #8a93a8; font-family: monospace; margin-left: 6px; }
+.actions { margin-top: 12px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+button {
+  padding: 7px 14px;
+  border-radius: 7px;
+  border: 1px solid #c3cadb;
+  background: #fff;
+  cursor: pointer;
+  font-size: 13px;
+}
+button:hover:not(:disabled) { background: #eef1f8; }
+button.primary { background: #3a5bd9; color: #fff; border-color: #3a5bd9; }
+button.primary:hover:not(:disabled) { background: #314db8; }
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.hint { font-size: 12px; color: #7a839c; }
+.diag { font-size: 11px; margin-top: 6px; }
+.diag .error { color: #c0303a; display: block; white-space: pre-wrap; }
+.diag .warning { color: #a9781e; display: block; }
+.diag .ok { color: #2e8b57; }
+.conflict {
+  border: 1px solid #e4c7c9;
+  background: #fdf3f3;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+}
+.conflict.resolved { border-color: #bfe0cc; background: #f1faf4; }
+.conflict h4 { margin: 0 0 6px; font-size: 13px; }
+.conflict pre {
+  background: rgba(255,255,255,0.7);
+  border-radius: 6px;
+  padding: 8px;
+  font-size: 11px;
+  max-height: 180px;
+  overflow: auto;
+  margin: 6px 0;
+  white-space: pre-wrap;
+}
+.conflict .choice-btns { display: flex; gap: 6px; flex-wrap: wrap; }
+.choice-btns button { padding: 4px 10px; font-size: 12px; }
+.choice-btns button.selected { background: #3a5bd9; color: #fff; border-color: #3a5bd9; }
+.badge {
+  display: inline-block;
+  font-size: 10px;
+  padding: 1px 7px;
+  border-radius: 10px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+.badge.NODE_MODIFY, .badge.NODE_DELETE { background: #fde2e4; color: #a3232b; }
+.badge.EDGE_DIVERGE { background: #fff1d6; color: #925d12; }
+.badge.INTEGRITY { background: #f3d9ff; color: #6b21a8; }
+#graph svg { width: 100%; height: auto; }
+.node-rect { fill: #eef2ff; stroke: #5b6ee1; stroke-width: 1; }
+.node-rect.root { fill: #dff5e8; stroke: #2e8b57; }
+.node-text { font-size: 11px; fill: #2a3350; font-family: monospace; pointer-events: none; }
+.edge-line { stroke: #8a93a8; stroke-width: 1; fill: none; marker-end: url(#arrow); }
+.edge-label { font-size: 9px; fill: #6d7690; font-family: monospace; }
+table { border-collapse: collapse; width: 100%; font-size: 12px; }
+th, td { text-align: left; padding: 5px 8px; border-bottom: 1px solid #edf0f6; vertical-align: top; }
+th { color: #69738d; font-weight: 600; }
+.bad { color: #c0303a; font-weight: 600; }
+.good { color: #2e8b57; }
+.output {
+  background: #0f1523;
+  color: #d6e0ff;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 12px;
+  max-height: 420px;
+  overflow: auto;
+}
+ul.clean { margin: 4px 0; padding-left: 18px; font-size: 12px; }
+ul.clean li { margin-bottom: 4px; }
+.dangling-item { color: #c0303a; font-family: monospace; font-size: 12px; }
+@media (max-width: 900px) {
+  .input-grid, .two-col { grid-template-columns: 1fr; }
+}

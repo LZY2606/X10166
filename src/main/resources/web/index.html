@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lockfile 语义合并室</title>
+  <link rel="stylesheet" href="/web/style.css">
+</head>
+<body>
+<header>
+  <h1>Lockfile 语义合并室</h1>
+  <div class="session-bar">
+    <label>会话
+      <select id="session-select"></select>
+    </label>
+    <button id="new-session" type="button">新建会话</button>
+    <span id="revision" class="revision"></span>
+  </div>
+</header>
+
+<main>
+  <section class="inputs-card">
+    <h2>1. 三份 lockfile</h2>
+    <div class="input-grid">
+      <div class="input-col">
+        <h3>Base（共同祖先）<span class="fp" id="fp-base"></span></h3>
+        <textarea id="base" spellcheck="false" placeholder="lockfile v1 ..."></textarea>
+        <div class="diag" id="diag-base"></div>
+      </div>
+      <div class="input-col">
+        <h3>Left <span class="fp" id="fp-left"></span></h3>
+        <textarea id="left" spellcheck="false" placeholder="lockfile v1 ..."></textarea>
+        <div class="diag" id="diag-left"></div>
+      </div>
+      <div class="input-col">
+        <h3>Right <span class="fp" id="fp-right"></span></h3>
+        <textarea id="right" spellcheck="false" placeholder="lockfile v1 ..."></textarea>
+        <div class="diag" id="diag-right"></div>
+      </div>
+    </div>
+    <div class="actions">
+      <button id="load-sample" type="button">载入冲突示例</button>
+      <button id="merge" type="button" class="primary">解析并合并</button>
+      <span id="save-hint" class="hint"></span>
+    </div>
+  </section>
+
+  <div class="two-col">
+    <section class="card">
+      <h2>2. 包图（根可达）</h2>
+      <div id="graph"></div>
+    </section>
+
+    <section class="card">
+      <h2>3. 冲突裁决</h2>
+      <div id="conflicts"></div>
+      <div id="conflict-summary"></div>
+    </section>
+  </div>
+
+  <div class="two-col">
+    <section class="card">
+      <h2>4. 来源与完整性摘要</h2>
+      <div id="integrity"></div>
+    </section>
+
+    <section class="card">
+      <h2>5. 可达清理</h2>
+      <div id="cleanup"></div>
+    </section>
+  </div>
+
+  <section class="card">
+    <h2>6. 合并结果</h2>
+    <div class="actions">
+      <button id="publish" type="button" class="primary" disabled>发布稳定输出</button>
+      <button id="download" type="button" disabled>下载最新版本</button>
+      <span id="publish-status" class="hint"></span>
+    </div>
+    <pre id="output" class="output"></pre>
+  </section>
+</main>
+
+<script src="/web/app.js"></script>
+</body>
+</html>

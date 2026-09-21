@@ -34,3 +34,7 @@ coverage/
 .vite/
 .turbo/
 *.tsbuildinfo
+
+# Lockfile 语义合并室本地会话数据
+data/
+data-*/
