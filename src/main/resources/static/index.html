@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>Lockfile 语义合并室</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header>
+  <h1>Lockfile 语义合并室</h1>
+  <p class="sub">三方语义合并 · 冲突裁决 · 完整性检查 · 可达清理</p>
+</header>
+
+<main>
+  <section class="panel">
+    <h2>会话</h2>
+    <div class="row">
+      <select id="sessionList"></select>
+      <button id="loadSession">继续会话</button>
+      <button id="newSession">新建空白会话</button>
+      <span id="sessionMeta" class="muted"></span>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>三份输入</h2>
+    <div class="cols3">
+      <label>base<textarea id="base" spellcheck="false"></textarea></label>
+      <label>left<textarea id="left" spellcheck="false"></textarea></label>
+      <label>right<textarea id="right" spellcheck="false"></textarea></label>
+    </div>
+    <div class="row">
+      <button id="submitInputs" class="primary">解析并合并</button>
+      <span id="inputMsg" class="muted"></span>
+    </div>
+    <div id="diagnostics"></div>
+  </section>
+
+  <section class="panel" id="conflictPanel" hidden>
+    <h2>待决冲突</h2>
+    <div id="conflicts"></div>
+  </section>
+
+  <section class="panel" id="integrityPanel" hidden>
+    <h2>来源与摘要检查</h2>
+    <div id="integrity"></div>
+  </section>
+
+  <section class="panel" id="prunedPanel" hidden>
+    <h2>可达清理</h2>
+    <ul id="pruned"></ul>
+  </section>
+
+  <section class="panel" id="graphPanel" hidden>
+    <h2>包图</h2>
+    <div id="graph"></div>
+  </section>
+
+  <section class="panel" id="outputPanel" hidden>
+    <h2>合并输出</h2>
+    <div class="row">
+      <a id="download" class="button primary" href="#">下载合并结果</a>
+      <span id="outputMeta" class="muted"></span>
+    </div>
+    <pre id="output"></pre>
+    <h3>历史输出版本</h3>
+    <ul id="outputVersions"></ul>
+  </section>
+</main>
+
+<script src="/app.js"></script>
+</body>
+</html>

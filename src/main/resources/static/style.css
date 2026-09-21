@@ -1,0 +1,33 @@
+* { box-sizing: border-box; }
+body { margin: 0; font-family: -apple-system, "PingFang SC", "Noto Sans CJK SC", sans-serif; background: #f4f5f7; color: #1f2430; }
+header { background: #1f2a44; color: #fff; padding: 18px 28px; }
+header h1 { margin: 0; font-size: 22px; }
+header .sub { margin: 4px 0 0; opacity: .75; font-size: 13px; }
+main { max-width: 1180px; margin: 0 auto; padding: 16px; }
+.panel { background: #fff; border: 1px solid #e2e5ea; border-radius: 8px; padding: 16px 20px; margin-bottom: 16px; }
+.panel h2 { margin: 0 0 12px; font-size: 16px; }
+.panel h3 { font-size: 14px; margin: 14px 0 8px; }
+.cols3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+.cols3 label { display: flex; flex-direction: column; font-size: 13px; font-weight: 600; gap: 6px; }
+textarea { height: 220px; font-family: ui-monospace, Menlo, monospace; font-size: 12px; border: 1px solid #ccd1d9; border-radius: 6px; padding: 8px; resize: vertical; }
+.row { display: flex; align-items: center; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
+button, .button { border: 1px solid #b9c0cc; background: #fff; border-radius: 6px; padding: 7px 14px; font-size: 13px; cursor: pointer; text-decoration: none; color: inherit; }
+button.primary, .button.primary { background: #2f6fed; border-color: #2f6fed; color: #fff; }
+button.choice { margin-right: 6px; }
+button.choice.selected { background: #2f6fed; color: #fff; border-color: #2f6fed; }
+.muted { color: #6b7280; font-size: 12px; }
+.diag { font-family: ui-monospace, Menlo, monospace; font-size: 12px; color: #b91c1c; margin-top: 6px; }
+.conflict { border: 1px solid #f0c36d; background: #fffaf0; border-radius: 6px; padding: 10px 14px; margin-bottom: 10px; }
+.conflict.resolved { border-color: #9bd1a0; background: #f2fbf3; }
+.conflict .desc { font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+.conflict .vals { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-family: ui-monospace, Menlo, monospace; font-size: 12px; margin-bottom: 8px; }
+.conflict .vals div { background: #fff; border: 1px solid #e5e7eb; border-radius: 4px; padding: 6px 8px; word-break: break-all; }
+table { border-collapse: collapse; width: 100%; font-size: 12px; }
+th, td { border: 1px solid #e2e5ea; padding: 5px 8px; text-align: left; font-family: ui-monospace, Menlo, monospace; }
+th { background: #f0f2f5; }
+tr.violation td { background: #fde8e8; color: #b91c1c; }
+.tree { font-family: ui-monospace, Menlo, monospace; font-size: 12px; line-height: 1.7; }
+.tree .node { cursor: default; }
+.tree .meta { color: #6b7280; }
+pre { background: #0f172a; color: #d7e0f4; padding: 14px; border-radius: 6px; overflow: auto; font-size: 12px; }
+.badge { display: inline-block; background: #e0e7ff; color: #3730a3; border-radius: 10px; padding: 1px 8px; font-size: 11px; margin-left: 6px; }
