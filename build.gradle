@@ -1,0 +1,41 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'mergeroom'
+version = '1.0.0'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+application {
+    mainClass = 'mergeroom.Main'
+}
+
+tasks.named('compileJava') {
+    options.encoding = 'UTF-8'
+}
+
+tasks.named('compileTestJava') {
+    options.encoding = 'UTF-8'
+}
+
+tasks.named('test') {
+    enabled = false
+}
+
+// 自包含测试运行器：不依赖外部 JUnit 工件，离线也可运行。
+tasks.register('selftest', JavaExec) {
+    group = 'verification'
+    description = 'Runs the self-contained test suite.'
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'mergeroom.TestRunner'
+    dependsOn 'compileTestJava'
+}
+
+tasks.named('check') {
+    dependsOn 'selftest'
+}
